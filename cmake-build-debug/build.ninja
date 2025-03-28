@@ -67,6 +67,12 @@ build CMakeFiles/DataStructureClass.dir/LinearList/main.cpp.o: CXX_COMPILER__Dat
   OBJECT_DIR = CMakeFiles/DataStructureClass.dir
   OBJECT_FILE_DIR = CMakeFiles/DataStructureClass.dir/LinearList
 
+build CMakeFiles/DataStructureClass.dir/test.cpp.o: CXX_COMPILER__DataStructureClass_unscanned_Debug /home/microindole/CLionProjects/DataStructureClass/test.cpp || cmake_object_order_depends_target_DataStructureClass
+  DEP_FILE = CMakeFiles/DataStructureClass.dir/test.cpp.o.d
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles/DataStructureClass.dir
+  OBJECT_FILE_DIR = CMakeFiles/DataStructureClass.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target DataStructureClass
@@ -75,7 +81,7 @@ build CMakeFiles/DataStructureClass.dir/LinearList/main.cpp.o: CXX_COMPILER__Dat
 #############################################
 # Link the executable DataStructureClass
 
-build DataStructureClass: CXX_EXECUTABLE_LINKER__DataStructureClass_Debug CMakeFiles/DataStructureClass.dir/others/main.cpp.o CMakeFiles/DataStructureClass.dir/others/Merge.cpp.o CMakeFiles/DataStructureClass.dir/LinearList/main.cpp.o
+build DataStructureClass: CXX_EXECUTABLE_LINKER__DataStructureClass_Debug CMakeFiles/DataStructureClass.dir/others/main.cpp.o CMakeFiles/DataStructureClass.dir/others/Merge.cpp.o CMakeFiles/DataStructureClass.dir/LinearList/main.cpp.o CMakeFiles/DataStructureClass.dir/test.cpp.o
   FLAGS = -g
   OBJECT_DIR = CMakeFiles/DataStructureClass.dir
   POST_BUILD = :

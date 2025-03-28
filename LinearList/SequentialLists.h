@@ -8,7 +8,7 @@
 
 #endif //SEQUENTIALLISTS_H
 const int MaxNumber = 100;
-template<class T>
+template<typename T>
 class Elements {
 private:
     T array[MaxNumber];

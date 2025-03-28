@@ -11,8 +11,9 @@ const int MAXNUMBER = 100;
 class poly{
 
 public:
-    float coef;
-    int exp;
+    float coef; //具体数值
+    int exp; //次数
+
     poly(float coef, int exp) {
         this->coef = coef;
         this->exp = exp;
@@ -28,6 +29,36 @@ public:
             c[k].exp = exp;
         }
     }
-
 };
+
+void polyAdd(poly a[],poly b[],poly c[],int at,int bt) {
+    int i = 0, j = 0, k = 0;
+    float co;
+    while(i <= at && j <= bt) {
+        if (a[i].exp == b[j].exp) {
+            co = a[i].coef + b[j].coef;
+            if (co != 0) {
+                c->append(co,a[i].exp,c,k);
+                k++;
+            }
+            i++;j++;
+        }else {
+            if (a[i].exp > b[j].exp) {
+                c->append(a[i].coef,a[i].exp,c,k);
+                k++;i++;
+            }else {
+                c->append(b[j].coef,b[j].exp,c,k);
+            }
+        }
+    }
+    while(i <= at) {
+        c->append(a[i].coef,a[i].exp,c,k);
+        k++;i++;
+    }
+    while(j <= bt) {
+        c->append(b[j].coef,b[j].exp,c,k);
+        k++;j++;
+    }
+    // 这里要返回c[]，思考怎么做
+}
 

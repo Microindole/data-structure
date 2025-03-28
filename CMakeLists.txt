@@ -8,4 +8,6 @@ add_executable(DataStructureClass others/main.cpp
         LinearList/SequentialLists.h
         LinearList/main.cpp
         LinearList/TwoPoly.h
+        LinearList/LinkedChain.h
+        test.cpp
 )
