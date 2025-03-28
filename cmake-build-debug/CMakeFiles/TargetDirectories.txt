@@ -1,0 +1,3 @@
+/home/microindole/CLionProjects/DataStructureClass/cmake-build-debug/CMakeFiles/DataStructureClass.dir
+/home/microindole/CLionProjects/DataStructureClass/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/microindole/CLionProjects/DataStructureClass/cmake-build-debug/CMakeFiles/rebuild_cache.dir
