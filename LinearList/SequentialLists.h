@@ -6,7 +6,6 @@
 #define SEQUENTIALLISTS_H
 #include <iostream>
 
-#include "LinkedChain.h"
 
 #endif //SEQUENTIALLISTS_H
 const int MaxNumber = 100;
@@ -43,7 +42,7 @@ public:
     T get_index_co(int index) {
         if (index >= size || index < 0) {
             std::cout << "the input error";
-            return NULL;
+            return co[0];
         }else {
             return co[index];
         }
@@ -114,46 +113,56 @@ public:
 };
 
 template<typename T>
+Elements<T> create_element(int size) {
+    std::cout<<"请按照降幂顺序输入具体的项：(注意一共只有"<<size<<"项)"<<std::endl;
+    T co[size];
+    int ex[size];
+    for (int i = 0; i < size; i++) {
+        std::cout<<"第"<<i+1<<"项，请输入(系数 指数):"<<std::endl;
+        std::cin>>co[i]>>ex[i];
+    }
+    return Elements(ex,co,size);
+}
+
+template<typename T>
 Elements<T> polynomial_merge(Elements<T> poly1,Elements<T> poly2) {
     int size = 0;
     int new_ex[MaxNumber];T new_co[MaxNumber];
     int index1 = 0,index2 = 0;
-    while (index1 < poly1.get_size() && index2 < poly2.get_size()) {
-        int ex1 = poly1.get_index_ex(poly1.ex[index1]), ex2 = poly2.get_index_ex(poly2.ex[index2]);
-        T co1 = poly1.get_co(ex1), co2 = poly2.get_co(ex2);
+    int size1 = poly1.get_size(),size2 = poly2.get_size();
+    while (index1 < size1 && index2 < size2) {
+        int ex1 = poly1.get_index_ex(index1), ex2 = poly2.get_index_ex(index2);
+        T co1 = poly1.get_index_co(index1), co2 = poly2.get_index_co(index2);
         if (ex1 < ex2) {
-            new_co[size] = co1;
-            new_ex[size] = ex1;
-            size++;
-            index1++;
-        }else if (ex2 < ex1) {
             new_co[size] = co2;
             new_ex[size] = ex2;
-            size++;
             index2++;
+        }else if (ex2 < ex1) {
+            new_co[size] = co1;
+            new_ex[size] = ex1;
+            index1++;
         }else {
             new_co[size] = co1+co2;
             new_ex[size] = ex1;
-            size++;
             index2++;
             index1++;
         }
+        size++;
     }
-    while (index1 < poly1.get_size()) {
-        new_co[size] = poly1.get_co(index1);
-        new_ex[size] = poly1.get_ex(index1);
+    while (index1 < size1) {
+        new_co[size] = poly1.get_index_co(index1);
+        new_ex[size] = poly1.get_index_ex(index1);
         size++;
         index1++;
     }
-    while (index2 < poly2.get_size()) {
-        new_co[size] = poly2.get_co(index2);
-        new_ex[size] = poly2.get_ex(index2);
+    while (index2 < size2) {
+        new_co[size] = poly2.get_index_co(index2);
+        new_ex[size] = poly2.get_index_ex(index2);
         size++;
         index2++;
     }
     Elements<T> new_poly(new_ex,new_co,size);
-     return new_poly;
-
+    return new_poly;
 }
 
 // 打印该类
@@ -161,8 +170,8 @@ template<typename T>
 void print_elements(Elements<T> poly) {
     int size = poly.get_size();
     for (int i = 0;i < size;i++) {
-        int ex = poly.get_ex(i);
-        T co = poly.get_co(ex);
+        int ex = poly.get_index_ex(i);
+        T co = poly.get_index_co(i);
         if (i == size - 1) {
             if (ex == 0 ) std::cout<<co<<std::endl;
             else std::cout<<co<<"x**("<<ex<<")"<<std::endl;

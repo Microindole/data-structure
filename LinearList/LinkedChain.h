@@ -8,17 +8,18 @@
 #include <ostream>
 
 #endif //LINKEDCHAIN_H
-const int MaxNumber = 100;
+const int MaxNumberForLink = 100;
 
 
 
 template<typename T>
 class Poly {
 private:
-    int ex;
+    int ex{};
     T co;
-    Poly * next;
 public:
+
+    Poly * next;
 
     Poly()= default;
 
@@ -170,18 +171,19 @@ public:
 
 // 输入、创建链表
 template<typename T>
-Poly<T> * create_poly_chain_poly() {
-    T co;int ex;
-    std::cout<<"请按照降幂顺序输入具体的项：(否则后果自负)"<<std::endl;
+Poly<T> * create_poly_chain_poly(int i) {
+    T co;int ex,index = 0;
+    std::cout<<"请按照降幂顺序输入具体的项：(注意一共只有"<<i<<"项)"<<std::endl;
     Poly<T> * head = nullptr, * temp =nullptr;
-    std::cout<<"请输入(系数 指数) (指数大于0):"<<std::endl;
-    std::cin>>co>>ex;
-    while (ex > -1) {
+    // std::cout<<"请输入(系数 指数) (指数大于0):"<<std::endl;
+    // std::cin>>co>>ex;
+    while (index < i) {
+        std::cout<<"第"<<index+1<<"项，请输入(系数 指数):"<<std::endl;
+        std::cin>>co>>ex;
         temp = new Poly<T>;
         temp->SetPoly(ex,co,head);
         head = temp;
-        std::cout<<"请输入(系数 指数) (指数大于0):"<<std::endl;
-        std::cin>>co>>ex;
+        index++;
     }
     return head;
 }
@@ -234,26 +236,46 @@ Poly<T> * merge_two_poly(Poly<T> * head1,Poly<T> * head2) {
 }
 
 template<typename T>
-void polynomial_add(Poly<T> * temp) {
-    Poly<T> * head1 = create_poly_chain_poly<T>();
+void print_poly(Poly<T> * new_head) {
+    for (int i = 0;i < new_head->getLength(new_head);i++) {
+        if (i == new_head->getLength(new_head) - 1) {
+            if (new_head->getIndexEx(i,new_head) == 0 ) std::cout<<new_head->getIndexCo(i,new_head)<<std::endl;
+            else std::cout<<new_head->getIndexCo(i,new_head)<<"x**("<<new_head->getIndexEx(i,new_head)<<")"<<std::endl;
+        }else std::cout<<new_head->getIndexCo(i,new_head)<<"x**("<<new_head->getIndexEx(i,new_head)<<") + ";
+    }
+}
+
+template<typename T>
+void polynomial_add(Poly<T> * temp, int size1, int size2) {
+    Poly<T> * head1 = create_poly_chain_poly<T>(size1);
     for (int i = 0;i < temp->getLength(head1);i++) {
         std::cout<<"指数: "<<temp->getIndexEx(i,head1)<<"   系数: "<<temp->getIndexCo(i,head1)<<std::endl;
     }
     std::cout<<std::endl;
-    Poly<T> * head2 = create_poly_chain_poly<T>();
+    Poly<T> * head2 = create_poly_chain_poly<T>(size2);
     for (int i = 0;i < temp->getLength(head2);i++) {
         std::cout<<"指数: "<<temp->getIndexEx(i,head2)<<"   系数: "<<temp->getIndexCo(i,head2)<<std::endl;
     }
     std::cout<<std::endl;
     std::cout<<"两个多项式相加的结果为："<<std::endl;
     Poly<T> * new_head = merge_two_poly(head1,head2);
-    for (int i = 0;i < temp->getLength(new_head);i++) {
-        if (i == temp->getLength(new_head) - 1) {
-            if (temp->getIndexEx(i,new_head) == 0 ) std::cout<<temp->getIndexCo(i,new_head)<<std::endl;
-            else std::cout<<temp->getIndexCo(i,new_head)<<"x**("<<temp->getIndexEx(i,new_head)<<")"<<std::endl;
-        }else std::cout<<temp->getIndexCo(i,new_head)<<"x**("<<temp->getIndexEx(i,new_head)<<") + ";
+    print_poly(new_head);
+    delete_poly(new_head);
+    delete_poly(head1);
+    delete_poly(head2);
+}
+
+template<typename T>
+void delete_poly(Poly<T> * head) {
+    Poly<T> * temp_this = head;
+    Poly<T> * temp_next = head->next;
+    while (temp_next != nullptr) {
+        delete temp_this;
+        temp_this = temp_next;
+        temp_next = temp_next->next;
     }
 }
+
 
 // struct node{
 //
