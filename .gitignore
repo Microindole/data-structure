@@ -1,0 +1,216 @@
+# Visual Studio Code
+.vscode/
+
+# Visual Studio
+*.suo
+*.user
+*.userosscache
+*.vcxproj
+*.filters
+*.sln.docstates
+*.sln
+*.vs/
+[Bb]in/
+[Dd]ebug/
+[Rr]elease/
+[Oo]bj/
+[Tt]est[Rr]esult*/
+_ReSharper*/
+*.[Cc]ache
+*.opensdf
+*.sdf
+*.idb
+*.pdb
+*/Debug/*
+
+# JetBrains IDEs (IntelliJ IDEA, CLion, PyCharm, etc.)
+.idea/
+*.iml
+*.ipr
+*.iws
+out/
+
+# Eclipse
+.classpath
+.project
+.settings/
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+
+# NetBeans
+nbproject/
+build/
+dist/
+nbbuild/
+nbdist/
+.nb-gradle/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Thumbs.db
+ehthumbs.db
+._*
+
+# Windows
+Thumbs.db
+ehthumbs_vista.db
+Desktop.ini
+
+# Build artifacts
+*.o
+*.exe
+*.dll
+*.so
+*.dylib
+*.app
+*.jar
+*.war
+*.ear
+*.class
+
+# Log files
+*.log
+
+# Temporary files
+*~
+*.tmp
+*.temp
+*.bak
+*.swp
+```
+
+**说明：**
+
+*   **`#` 开头的行是注释。**
+*   **`.vscode/`**: Visual Studio Code 的工作区设置。
+*   **Visual Studio 相关**: 包含用户特定的设置、解决方案缓存、编译输出目录（`bin/`, `obj/`, `Debug/`, `Release/`）等。
+*   **JetBrains IDEs 相关**: `.idea/` 目录包含项目配置，`*.iml` 是模块文件。
+*   **Eclipse 相关**: 项目元数据和编译输出。
+*   **NetBeans 相关**: 项目文件和构建输出。
+*   **macOS 和 Windows 系统文件**: 如 `.DS_Store` 和 `Thumbs.db` 是操作系统自动生成的用于存储文件夹视图设置或缩略图的文件。
+*   **Build artifacts**: 编译过程中产生的中间文件（如 `.o`）和可执行文件/库。
+*   **Log files**: 程序运行时产生的日志文件。
+*   **Temporary files**: 编辑器或系统产生的临时备份文件。
+
+**如何使用：**
+
+1.  将上述内容复制并粘贴到您项目根目录下的 `.gitignore` 文件中。
+2.  如果 `.gitignore` 文件是新创建的，或者您修改了它，并且希望Git开始忽略这些文件（如果它们之前已经被跟踪了），您可能需要执行以下命令来清除Git的缓存：
+    ```bash
+    git rm -r --cached .
+    git add .
+    git commit -m "Update .gitignore and remove previously tracked IDE/OS files"
+    ```
+    **警告：** `git rm -r --cached .` 会从Git的跟踪中移除所有文件（但保留在您的工作目录中），然后 `git add .` 会根据新的 `.gitignore` 规则重新添加文件。在执行此操作前，请确保您已提交所有重要的更改。如果只想移除特定被错误跟踪的文件，可以使用 `git rm --cached <file_path>`。
+
+选择性地保留或删除上述列表中的条目，以最符合您项目和团队的需求。// filepath: d:\VisualStudio\works\data_structure_class\.gitignore
+# Visual Studio Code
+.vscode/
+
+# Visual Studio
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.vs/
+[Bb]in/
+[Dd]ebug/
+[Rr]elease/
+[Oo]bj/
+[Tt]est[Rr]esult*/
+_ReSharper*/
+*.[Cc]ache
+*.opensdf
+*.sdf
+
+# JetBrains IDEs (IntelliJ IDEA, CLion, PyCharm, etc.)
+.idea/
+*.iml
+*.ipr
+*.iws
+out/
+
+# Eclipse
+.classpath
+.project
+.settings/
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+
+# NetBeans
+nbproject/
+build/
+dist/
+nbbuild/
+nbdist/
+.nb-gradle/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Thumbs.db
+ehthumbs.db
+._*
+
+# Windows
+Thumbs.db
+ehthumbs_vista.db
+Desktop.ini
+
+# Build artifacts
+*.o
+*.exe
+*.dll
+*.so
+*.dylib
+*.app
+*.jar
+*.war
+*.ear
+*.class
+
+# Log files
+*.log
+
+# Temporary files
+*~
+*.tmp
+*.temp
+*.bak
+*.swp
+```
+
+**说明：**
+
+*   **`#` 开头的行是注释。**
+*   **`.vscode/`**: Visual Studio Code 的工作区设置。
+*   **Visual Studio 相关**: 包含用户特定的设置、解决方案缓存、编译输出目录（`bin/`, `obj/`, `Debug/`, `Release/`）等。
+*   **JetBrains IDEs 相关**: `.idea/` 目录包含项目配置，`*.iml` 是模块文件。
+*   **Eclipse 相关**: 项目元数据和编译输出。
+*   **NetBeans 相关**: 项目文件和构建输出。
+*   **macOS 和 Windows 系统文件**: 如 `.DS_Store` 和 `Thumbs.db` 是操作系统自动生成的用于存储文件夹视图设置或缩略图的文件。
+*   **Build artifacts**: 编译过程中产生的中间文件（如 `.o`）和可执行文件/库。
+*   **Log files**: 程序运行时产生的日志文件。
+*   **Temporary files**: 编辑器或系统产生的临时备份文件。
+
+**如何使用：**
+
+1.  将上述内容复制并粘贴到您项目根目录下的 `.gitignore` 文件中。
+2.  如果 `.gitignore` 文件是新创建的，或者您修改了它，并且希望Git开始忽略这些文件（如果它们之前已经被跟踪了），您可能需要执行以下命令来清除Git的缓存：
+    ```bash
+    git rm -r --cached .
+    git add .
+    git commit -m "Update .gitignore and remove previously tracked IDE/OS files"
+    ```
+    **警告：** `git rm -r --cached .` 会从Git的跟踪中移除所有文件（但保留在您的工作目录中），然后 `git add .` 会根据新的 `.gitignore` 规则重新添加文件。在执行此操作前，请确保您已提交所有重要的更改。如果只想移除特定被错误跟踪的文件，可以使用 `git rm --cached <file_path>`。
+
+选择性地保留或删除上述列表中的条目，以最符合您项目和团队的需求。
